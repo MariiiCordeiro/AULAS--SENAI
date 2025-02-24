@@ -1,0 +1,104 @@
+/*Autor: Mariana Cordeiro
+  Nome do programa: Cruzameno de samáforos - Fazer dois sempáforos de carros e dois semáforos de pedestres
+  Data: 19/02
+  Descrição: Fazer dois sempáforos de carros e dois semáforos de pedestres no arduino. Configurar os pinos para que pisquem na ordem   representando um semáforo. 
+*/
+
+
+#define pinLedVermelho 2
+#define pinLedAmarelo  3
+#define pinLedVerde    4
+
+#define pinLedVermelhoB 5 
+#define pinLedAmareloB  6
+#define pinLedVerdeB    7
+
+#define pinLedVermelhoPedestre  8
+#define pinLedVerdePedestre 9
+#define pinLedVermelhoPedestreB  10
+#define pinLedVerdePedestreB 11
+
+#define tempoLedVermelho 5000
+#define tempoLedAmarelo  2000
+#define tempoLedVerde    3000 
+/* tempoLedVerde serve para quando necessitar-se de 3s.
+O tempo do LedVermelho será a soma do tempo do LedAmarelo e LedVerde, totalizando 5s.*/
+#define tempoPiscaPisca   500
+// Emite um alerte de mudança de estado para o pedestre.
+ 
+
+void setup()
+{
+  pinMode(pinLedVermelho, OUTPUT);
+  pinMode(pinLedAmarelo, OUTPUT);
+  pinMode(pinLedVerde, OUTPUT);
+  pinMode(pinLedVermelhoB, OUTPUT);
+  pinMode(pinLedAmareloB, OUTPUT);
+  pinMode(pinLedVerdeB, OUTPUT);
+  pinMode(pinLedVerdePedestre, OUTPUT);
+  pinMode(pinLedVermelhoPedestre, OUTPUT);
+  pinMode(pinLedVerdePedestreB, OUTPUT);
+  pinMode(pinLedVermelhoPedestreB, OUTPUT);
+}
+
+void loop()
+{ 
+  digitalWrite(pinLedVerdePedestre, HIGH); 
+  digitalWrite(pinLedVermelhoPedestreB, HIGH); 
+  digitalWrite(pinLedVermelho, HIGH);
+  digitalWrite(pinLedVerdeB, HIGH);
+  delay (tempoLedVerde);
+  
+  digitalWrite(pinLedVerdeB, LOW);
+  digitalWrite(pinLedAmareloB, HIGH); 
+  delay (tempoLedAmarelo);
+  
+  digitalWrite(pinLedVerdePedestre, LOW); 
+  digitalWrite(pinLedVermelhoPedestre, HIGH);
+  delay (tempoPiscaPisca);
+  digitalWrite(pinLedVermelhoPedestre, LOW);
+  delay (tempoPiscaPisca);
+  digitalWrite(pinLedVermelhoPedestre, HIGH);
+  delay (tempoPiscaPisca);
+  digitalWrite(pinLedVermelhoPedestre, LOW);
+  delay (tempoPiscaPisca);
+  
+  digitalWrite(pinLedVermelhoPedestre, HIGH); 
+  digitalWrite(pinLedVermelhoPedestreB, LOW);
+  digitalWrite(pinLedVerdePedestreB, HIGH); 
+  digitalWrite(pinLedVermelho, LOW);
+  digitalWrite(pinLedAmareloB, LOW);
+  digitalWrite(pinLedVerde, HIGH);
+  digitalWrite(pinLedVermelhoB, HIGH);
+  delay (tempoLedVerde);
+  
+  digitalWrite(pinLedVerde, LOW);
+  digitalWrite(pinLedAmarelo, HIGH);
+  delay (tempoLedAmarelo);
+  
+  digitalWrite(pinLedVerdePedestreB, LOW);
+  digitalWrite(pinLedVermelhoPedestreB, HIGH);
+  delay (tempoPiscaPisca);
+  digitalWrite(pinLedVermelhoPedestreB, LOW);
+  delay (tempoPiscaPisca);
+  digitalWrite(pinLedVermelhoPedestreB, HIGH);
+  delay (tempoPiscaPisca);
+  digitalWrite(pinLedVermelhoPedestreB, LOW);
+  delay (tempoPiscaPisca);
+  
+  digitalWrite(pinLedAmarelo, LOW);
+  digitalWrite(pinLedVermelhoPedestreB, HIGH);
+  digitalWrite(pinLedVermelho, HIGH);
+  digitalWrite(pinLedVerdeB, HIGH);
+  digitalWrite(pinLedVermelhoB, LOW);
+  digitalWrite(pinLedVerdePedestre, HIGH);
+  digitalWrite(pinLedVermelhoPedestre, LOW);
+  delay (tempoLedAmarelo);
+  
+  /*É possível realizar de maneira mais fácil, utilizando 
+  somente
+  uma sequencia entre o verde e amarelo e 
+  depois só acrescentar o vermelho
+   
+  
+}

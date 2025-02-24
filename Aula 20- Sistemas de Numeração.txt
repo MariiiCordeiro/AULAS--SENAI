@@ -1,0 +1,38 @@
+Sistemas de numeração são conjuntos de símbolos e regras que permitem representar e manipular quantidades de determinados elementos. Historicamente já passamos por diversos sistemas de numeração que evoluíram de acordo com a cultura e necessidade das civilizações. Com base nisso, a computação é marcada por uma necessidade crescente de representar e manipular informações de forma eficiente, dessa forma, sistemas como binário, hexadecimal e octal foram largamente empregados para diversas necessidades específicas. Esses sistemas permitem a entrada de dados e a compreensão dos computadores dessas informações enviadas por teclados e outros dispositivos de entrada.
+
+Sistema Decimal
+
+Sistema de numeração de posição que utiliza a base dez. Baseia-se em uma numeração de posição, onde os dez algarismos indo-arábicos : 0 1 2
+3 4 5 6 7 8 9 servem a contar unidades, dezenas, centenas, etc. da direita para a esquerda. No sistema decimal o símbolo 0 (zero) posicionado à esquerda do número escrito não altera seu valor representativo. Mas posicionado a direita implica na multiplicação da grandeza pela base, ou seja, base 10.
+
+
+Sistema Binário:
+O sistema binário ou base 2, é um sistema de numeração posicional em que todas as quantidades se representam com base em dois números, sendo o 0 e 1.Os computadores digitais trabalham internamente com dois níveis de tensão, pelo que o seu sistema de numeração natural é o sistema binário (aceso, apagado). Com efeito, num sistema simples como este é possível simplificar o cálculo, com o auxílio da lógica booleana. Em computação, chama-se um dígito binário (0 ou 1) de bit, um agrupamento de 8 bits corresponde a um byte.
+
+Conversão de Decimal para Binário:
+Divide-se sucessivamente por 2. Depois o número binário é formado pelo quociente da última divisão seguido dos restos de todas as divisões na sequência em que foram realizadas.
+
+Conversão de Binário para Decimal
+Identifica-se a posição de cada bit e multiplica-se cada bit pelo valor de 2 elevado à sua posição.
+
+
+
+Sistema Hexadecimal:
+O sistema hexadecimal é um sistema de numeração posicional que representa os números em base 16, portanto empregando 16 símbolos. Seus símbolos são: 0 1 2 3 4 5 6 7 8 9 A B C D E F. O sistema hexadecimal está vinculado à informática, pois os computadores costumam utilizar o byte como unidade básica da memória. 1 byte = 8 bits e então um byte pode ser representado por 8 algarismos do sistema binário ou por 2 algarismos do sistema hexadecimal. Por ser múltiplo de oito o agrupamento dos bits se torna mais prático e consegue trazer uma quantidade maior de bits diferente do octal.
+
+Conversão direta entre Hexadecimal e Binário:
+É feita com base na tabela dos números binários.
+
+Conversão de Binário para Hexadecimal
+Separa-se o número binário em grupos de 4 dígitos da direita para a esquerda e então converte-se cada grupo de acordo com a tabela de conversão dos binários.
+
+Conversão de Decimal para Hexadecimal
+Segue o mesmo princípio da conversão de decimal para binário, a diferença é a divisão pela base 16.
+
+Conversão de Hexadecimal para Decimal
+Identifica-se a posição de cada bit e multiplica-se cada bit pelo valor de 16 elevado à sua posição
+
+
+Sistema Octal:
+Sistema octal é um sistema numérico de base 8, ou seja, ele utiliza 8 símbolos para representar os números. Esses símbolos são os dígitos: 0, 1, 2, 3, 4, 5, 6, 7.
+No sistema octal, cada dígito tem um valor que é uma potência de 8. Ele foi bastante utilizado em programação e nos primeiros computadores devido à sua simplicidade e proximidade com o sistema binário. Cada dígito octal pode ser representado por exatamente três bits, o que facilita a conversão entre octal e binário. Porém ele foi substituído pelo sistema hexadecimal, pois devido ao agrupamento de 4 bit é possível representar valores maiores e mais compactados. Com o sistema octal o valor máximo possível de ser representado é 377 o que o torna menos eficiente.

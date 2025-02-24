@@ -1,0 +1,47 @@
+/*Autor: Mariana Cordeiro
+  Nome do programa: Memória do microcontrolador - Aprender sobre as variáveis e como declará-las
+  Data: 21/02
+  Descrição: Declaração de variáveis e aprender sobre a quantidade de memória que elas armazenam. 
+*/
+
+
+unsigned numero = 400;  //Toda vez que envolver tempo na programação utilizar o unsigned//
+/* Cria variável do tipo inteira, nesse caso s[o foi reservado um espaço de memória
+a partir do símbolo = será o valor que essa variável recebe um valor de informação, 
+ela não ocupa um valor de 400 na memória o valor dela é 400 apenas*/
+/* O tamanho da memória variável é muito importante*/
+
+void setup()
+
+{
+  Serial.begin (9600); // Velocidade da comunicação serial
+  Serial.println("Tamanhos dos tipos de variaveis em Bytes"); 
+  Serial.print("Bool:"); Serial.println (sizeof (bool));// Tem 8bits - 1 Byte, segue a lógica boolena ou seja somente 0 e 1, verdaadeiro ou falso. Qualquer coisa diferente de zero será 1, 0 é 0.
+  Serial.print("Char:"); Serial.println (sizeof (char)); // Tem 1 Byte, vai de 0 a 255 de capacidade de memória. Não existe char negativo na linguagem C. Escreve caracteres da tabela ASCII, em que os números são alfanúmericos.
+  Serial.print("Byte:"); Serial.println (sizeof (byte)); // 0 a 255 somente no arduíno. -127 a 128 nas demais linguagens
+  Serial.print("Int:"); Serial.println (sizeof (int)); // Pode ser tanto sinalizado implicitamente, para deixar explicito deve-se utilizar o unsigned na frente. Vai de -32768 a 327677.
+  Serial.print("Unsigned int:"); Serial.println (sizeof (unsigned int));// Vai de 0 a 65535- retira o sinal
+  Serial.print("Long:"); Serial.println (sizeof (long)); // Vai de 2.147.483.648 a 2.147.483.647
+  Serial.print("Unsigned long:"); Serial.println (sizeof (unsigned long)); // 0 a 4.294.967.295
+  Serial.print("Float:"); Serial.println (sizeof (float)); // Será igual o long - O valor máximo permitido 3,4028235 x 10^38 e o valor mínimo positivo será de 1.175494 x 10^-38. O valor mínimo negativo -1.175494 x 10^-38 e o valor máximo negativo será de -3,4028235 x 10^38. O que o difere do double e que ele aceita vírgula. 
+  Serial.print("Double:"); Serial.println (sizeof (double)); // Será igual o long
+ 
+
+  Serial.print("int8_t:"); Serial.println (sizeof (int8_t)); // Aqui é uma forma de deixae implícito a quantidade de Bytes, aqui são 8 Bytes.
+  Serial.print("uint8_t:"); Serial.println (sizeof (int8_t)); // Para deixar explicito utiliza-se int_t
+  Serial.print("int16_t:"); Serial.println (sizeof (int16_t));//
+  Serial.print("uint16_t:"); Serial.println (sizeof (int16_t));
+  Serial.print("int32_t:"); Serial.println (sizeof (int32_t));
+  Serial.print("uint32_t:"); Serial.println (sizeof (int32_t));
+  Serial.print("int64_t:"); Serial.println (sizeof (int64_t));
+  Serial.print("uint64_t:"); Serial.println (sizeof (int64_t));
+
+
+
+}
+
+ 
+void loop()
+{
+  
+}

@@ -1,0 +1,104 @@
+ /* Autor: Mariana Cordeiro
+    Nome do programa: Variáveis e a matemática
+    Data: 24/02
+    Descrição: Declaração de variáveis e suas relações com as operações matemáticas.
+  */  
+
+//*********DECLARAÇÃO DE VARIÁVIES GLOBAIS***********
+/*Variável global é definida quando declaramos uma variável fora de qualquer função( escopo global).
+São visíveis, ou seja, podem ser utilizadas no algoritmo principal e por todos os outros subalgoritmos. 
+Podendo ser lida e alterada*/ 
+
+int NumeroA = 14; 
+int NumeroB = 5;
+int Resultado = 0;
+float ResultadoReal = 0; 
+  
+void setup()
+{
+  //********ADIÇÃO********
+  Serial.begin (9600);
+  Resultado = NumeroA + NumeroB;
+  Serial.print("A soma do numero A com o numero B eh':");
+  Serial.println(Resultado);
+  
+  //********SUBTRAÇÃO******** 
+  Resultado = NumeroA - NumeroB;
+  Serial.print("A subtracao do numero A com o numero B eh':");
+  Serial.println(Resultado);
+  
+  //********MULTIPLICAÇÃO********
+  Resultado = NumeroA * NumeroB;
+  Serial.print ("A multiplicacao de A e B eh':");
+  Serial.println(Resultado);
+  
+  //********DIVISÃO********
+  Resultado =  NumeroA/NumeroB;
+  Serial.print("A divisao de A por B eh':");
+  Serial.println(Resultado);
+  Resultado = NumeroA%NumeroB;
+  Serial.print("E sobra:");
+  Serial.println(Resultado);
+  ResultadoReal = (float)NumeroA/(float)NumeroB; // nao posso utilizar um int e esperar um float tem-se que tranfromar o tipo das variaveis
+  Serial.print ("Ou ");
+  Serial.println (ResultadoReal,1);// limita a impressao do resultado na qntd de casa decimal desejada, no caso, uma casa.
+  
+  //********POTÊNCIA********
+  Resultado = pow(NumeroA,NumeroB);//'NumeroA' elevado a 'NumeroB'
+  Serial.print( "Numero A elevado a Numero B eh':");
+  Serial.println (Resultado);
+ 
+  //********QUADRADO********
+  Resultado = sq (NumeroA); // NumeroA elevado ao quadrado
+  Serial.print( "Numero A ao quadrado eh':");
+  Serial.println (Resultado);
+  
+  //*********RAIZ QUADRADA********
+  Resultado = (NumeroA);
+  Serial.print ("A raiz quadrada de numero A eh':");
+  Serial.println (ResultadoReal);
+ 
+  
+  //********MÓDULO********
+  Resultado = abs (NumeroA* -1);
+  Serial.print ( "O modulo de numero A eh':");
+  Serial.println (Resultado);
+  
+ //*********RESTRIÇÃO********
+  Resultado = constrain ( NumeroA, -3,5); //Restringe a variavel Numero A 
+                                          //aos limites desejados, no caso -3 e 5.
+  Serial.print ("A restricao de Numero A eh':");
+  Serial.println (Resultado);
+  
+ //********REMAPEAMENTO*********
+  Resultado = map(NumeroA, 0 , 20 , 0 , 10); 
+  // map (valor, deMenor, deMaior, paraMenor, paraMaior)
+  
+  //********OPERADORES DE ATRIBUIÇÃO********
+  //NumeroA = NumeroA + 5;
+  Serial.println (NumeroA += 5); 
+  
+  //NumeroA= NumeroA - 5;
+  Serial.println (NumeroA -= 5);
+  
+  //Numero A = NumeroA * 2;
+  Serial.println (NumeroA *= 2);
+  
+  //NumeroA = NumeroA / 2;
+  Serial.println (NumeroA /= 2);
+  
+  //********INCREMENTAR VARIÁVEL********
+  //NumeroA = NumeroA + 1;
+ Serial.println (NumeroA++); // pós incremento - utiliza o valor A e depois incrementa o valor após a execução da função.
+ Serial.println (++NumeroA); // pré incremento - incrementa antes de executar a função.
+  
+  //********DECREMENTAR VARIÁVEL********
+  //NumeroA = NumeroA - 1;
+  Serial.println(NumeroA--); //pós incremento
+  Serial.println(--NumeroA); //pré incremento
+}
+
+void loop()
+{
+ 
+}
