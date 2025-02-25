@@ -1,0 +1,65 @@
+/* Autor: Mariana Cordeiro
+    Nome do programa: Tomada de decisão - parte 2
+    Data: 27/02
+    Descrição: Realizar o cálculo de IMC e atribuir os "valores" conforme o resultado.
+  */  
+
+float Altura    = 1.82; // Deve-se coloocar ponto m^2
+float Peso      = 90; // KG
+float IMC = 0; // IMC KG/m^2
+
+// Menor que 18.5 = Abaixo do peso
+// Entre 18,5 a 24,9 = Peso normal
+// Entre 25 a 29,9 = Sobrepeso
+// Entre 30 a 34,9 = Obesidade grau I
+// Entre 35 a 39,9 = Obesidade grau II
+// Entre 40 a 49,9 = Obesidade grau III
+// Entre 50 a 59,9 = Obsevidade grau IV
+// Acima de 60 = Obesidade grau V
+void setup()
+{
+  Serial.begin (9600);
+  IMC = Peso/sq(Altura); // pow também pode ser utilizado aqui ou (altura*altura)
+  Serial.print("O resultado do IMC eh: ");
+  Serial.println (IMC);
+  
+  if (IMC >= 60 ){
+  Serial.print("Voce esta na classificacao de: ");
+  Serial.println("Obesidade grau V.");
+}
+  
+ else if (IMC < 60 & IMC >= 50){// Menor que 60 e maior ou igual 50.
+   Serial.print("Voce esta na classificacao de: ");
+   Serial.println ("Obesidade grau IV.");
+}
+  else if (IMC < 50 & IMC >= 40){
+   Serial.print("Voce esta na classificacao de: ");
+   Serial.println ("Obesidade grau III.");
+}
+  else if (IMC < 40 & IMC >= 35){
+   Serial.print("Voce esta na classificacao de: ");
+   Serial.println ("Obesidade grau II.");
+}
+  else if (IMC < 35 & IMC >= 30){
+   Serial.print("Voce esta na classificacao de: ");
+   Serial.println ("Obesidade grau I.");
+}
+  else if (IMC < 30 & IMC >= 25){
+   Serial.print("Voce esta na classificacao de: ");
+   Serial.println ("Sobrepeso.");
+}
+  else if (IMC < 25 & IMC >= 18.5){
+   Serial.print("Voce esta na classificacao de: ");
+   Serial.println ("Peso normal.");
+}
+
+  else {
+    Serial.print("Voce esta na classificacao de: ");
+    Serial.println ("Abaixo do peso");
+  }
+}
+
+void loop()
+{
+ 
+}
