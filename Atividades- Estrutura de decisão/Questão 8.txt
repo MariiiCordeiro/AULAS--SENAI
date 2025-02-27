@@ -1,0 +1,32 @@
+ /* Autor: Mariana Cordeiro
+    Nome do programa: Exercícios sobre estruturas de decisão.
+    Data: 27/02
+    Descrição: Resolução da questão 8 - Fazer um programa que avalia
+    dois valores e imprime qual é o maior número.
+  */  
+
+
+float valorComparado1 = 5;  
+float valorComparado2 = 15;
+
+
+void setup()
+{
+  Serial.begin (9600);
+  
+  if ( valorComparado1 > valorComparado2 ){
+    Serial.print("O numero maior eh': ");
+    Serial.println(valorComparado1);  
+  }
+  
+  else{
+    Serial.print("O numero maior eh':");
+    Serial.println(valorComparado2);
+     
+}
+}
+
+void loop()
+{
+ 
+}

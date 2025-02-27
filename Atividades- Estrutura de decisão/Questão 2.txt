@@ -1,0 +1,34 @@
+/* Autor: Mariana Cordeiro
+    Nome do programa: Exercícios sobre estruturas de decisão.
+    Data: 27/02
+    Descrição: Resolução da questão 2 -  Escrever um código que acione um alerta 
+    quando a bateria estiver entre 20% e 80%.
+  */
+
+int bateria     = 30;
+
+#define pinLedLaranjaBateria  3
+
+
+void setup() {
+  pinMode(pinLedLaranjaBateria, OUTPUT);
+  
+  Serial.begin (9600);
+
+  if (bateria >= 20 && bateria <= 80) {
+    digitalWrite(pinLedLaranjaBateria, HIGH);  // Liga o LED Laranja para bateria em estado intermediário
+    Serial.print("Bateria esta com: ");
+    Serial.println(bateria);
+  } else {
+    digitalWrite(pinLedLaranjaBateria, LOW);  // Desliga o LED Laranja se a bateria estiver fora da faixa
+    Serial.println("Bateria fora da faixa (menor que 20% ou maior que 80%).");
+    Serial.print("Bateria esta com: ");
+    Serial.println(bateria);
+  }
+}
+
+void loop()
+{
+
+  
+}

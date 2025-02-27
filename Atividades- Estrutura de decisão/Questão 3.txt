@@ -1,0 +1,36 @@
+/* Autor: Mariana Cordeiro
+    Nome do programa: Exercícios sobre estruturas de decisão.
+    Data: 27/02
+    Descrição: Resolução da questão 3 -  Criar um programa que avalie um valor, 
+    converta esse valor de um intervalo de 0 a 1023 para um novo intervalo de 0 
+    a 100, em seguida coloque o resultado entre os limites 20 e 80, caso o valor 
+    exceda os limites acenda um LED de alerta e mostre no terminal a mensagem 
+    "O valor __ excedeu os limites, valor reajustado para __".
+  */
+
+int valorLido = 10;
+int valorReajustado = 0;
+
+#define pinLedAzulAlerta 2
+
+
+void setup()
+{
+  pinMode(pinLedAzulAlerta, OUTPUT);
+  Serial.begin (9600);
+  
+  valorReajustado = map(valorLido, 0 , 1023 , 0 , 100);
+  
+  if (valorReajustado < 20 || valorReajustado > 80 ) {
+  digitalWrite(pinLedAzulAlerta, HIGH);
+  Serial.print("O valor ");
+  Serial.print(valorLido);
+  Serial.print(" excedeu os limites. Valor reajustado para: ");
+  Serial.println(valorReajustado);
+  }  
+  else {
+  digitalWrite(pinLedAzulAlerta, LOW);
+  Serial.print("Valor dentro do limite: ");
+  Serial.println(valorReajustado);
+  }
+  

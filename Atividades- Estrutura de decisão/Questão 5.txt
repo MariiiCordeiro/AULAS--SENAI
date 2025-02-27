@@ -1,0 +1,25 @@
+/* Autor: Mariana Cordeiro
+    Nome do programa: Exercícios sobre estruturas de decisão.
+    Data: 24/02
+    Descrição: Resolução da questão 5 - Avaliação de números inteiros, classificando-os
+    em positivos ou negativos.
+  */  
+
+int numeroInteiro = -10;
+
+void setup()
+{
+  Serial.begin (9600);
+  if ( numeroInteiro > 0 ){
+    Serial.print("Numero positivo");
+  }
+  
+  else{
+    Serial.println("Numero negativo");
+}
+}
+
+void loop()
+{
+ 
+}

@@ -1,0 +1,39 @@
+/* Autor: Mariana Cordeiro
+    Nome do programa: Exercícios sobre estruturas de decisão.
+    Data: 27/02
+    Descrição: Resolução da questão 4 -   Escreva um programa que acenda 
+    um Led caso o numero avaliado seja par.*/
+  
+
+
+int numero          = 5;
+
+#define pinLedLaranjaPar 3
+
+
+void setup()
+{
+  pinMode(pinLedLaranjaPar, OUTPUT);
+  Serial.begin (9600);
+
+  if (numero%2 == 0 ) {
+  digitalWrite(pinLedLaranjaPar, HIGH);
+  Serial.print("O numero ");
+  Serial.print(numero);
+  Serial.println(" e par. ");  
+  }  
+  else {
+  digitalWrite(pinLedLaranjaPar, LOW);
+  Serial.print("O numero e impar. ");
+  Serial.println(numero);
+  }
+  
+}
+    
+ 
+
+void loop()
+{
+
+  
+}

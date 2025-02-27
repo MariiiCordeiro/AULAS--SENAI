@@ -1,0 +1,42 @@
+/* Autor: Mariana Cordeiro
+    Nome do programa: Exercícios sobre estruturas de decisão.
+    Data: 27/02
+    Descrição: Resolução da questão 6 - Fazer um programa com as seguintes
+informações: nome, cargo e salário de um funcionário. Se o funcionário ganhar
+abaixo de 1000 reais, calcule o salário acrescido de 10%. Ao final exibir o nome,
+o cargo e o salário reajustado desse funcionário.
+  */  
+
+
+char nomeDoFuncionario []  = "Maria"; // char é utilizado para armazenar um único caractere.
+char cargoDoFuncionario[]  = "Analista";// Para um nome completo utiliza-se uma string chmada array de caracteres que no caso é simbolizado por [].
+float salarioDoFuncionario = 950.75;
+float salarioComAumento    = 0;
+float porcentagem          = 10;
+void setup()
+{
+  Serial.begin (9600);
+  if ( salarioDoFuncionario < 1000 ){
+    salarioComAumento = salarioDoFuncionario+(salarioDoFuncionario*porcentagem/100);
+    Serial.print("Nome do Funcionario: ");
+    Serial.println(nomeDoFuncionario); 
+    Serial.print("Cargo: ");
+    Serial.println(cargoDoFuncionario); 
+    Serial.print("Salario Reajustado: R$ ");
+    Serial.println(salarioComAumento);   
+  }
+  
+  else{
+    Serial.print("Nome do Funcionario:");
+    Serial.println(nomeDoFuncionario); 
+    Serial.print("Cargo: ");
+    Serial.println(cargoDoFuncionario); 
+    Serial.print("Salario: R$ ");
+    Serial.println(salarioDoFuncionario);   
+}
+}
+
+void loop()
+{
+ 
+}

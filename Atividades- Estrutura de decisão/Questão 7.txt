@@ -1,0 +1,35 @@
+/* Autor: Mariana Cordeiro
+    Nome do programa: Exercícios sobre estruturas de decisão.
+    Data: 27/02
+    Descrição: Resolução da questão 7 - Fazer um programa que atenda a necessidade de uma que
+    empresa decide dar aumento de 30% aos funcionários cujo salário é inferior a 500 reais. 
+    Avaliando se o salário de um funcionário e imprimindo o valor do salário reajustado ou 
+    uma mensagem caso o funcionário não tenha direito a aumento.
+  */  
+
+
+char nomeDoFuncionario []  = "Maria"; // char é utilizado para armazenar um único caractere.
+float salarioDoFuncionario = 422.53;  // Para um nome completo utiliza-se uma string chmada array de caracteres que no caso é simbolizado por [].
+float salarioReajustado    = 0;
+float porcentagem          = 30;
+void setup()
+{
+  Serial.begin (9600);
+  if ( salarioDoFuncionario < 500 ){
+    salarioReajustado = salarioDoFuncionario+(salarioDoFuncionario*porcentagem/100);
+    Serial.println("Voce tem direito ao aumento!");
+    Serial.print("Seu salario sera reajustado para: R$ ");
+    Serial.print(salarioReajustado);   
+  }
+  
+  else{
+    Serial.println("O valor do seu salario nao atende aos requisitos de aumento.");
+    Serial.print("Salario atual: ");
+    Serial.print(salarioDoFuncionario);   
+}
+}
+
+void loop()
+{
+ 
+}
