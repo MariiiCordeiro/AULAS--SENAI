@@ -1,0 +1,65 @@
+
+/* Autor: Mariana Cordeiro
+    Nome do programa: Exercícios sobre estruturas de decisão.
+    Data: 28/02
+    Descrição: Resolução da Atividade - Criar uma variável que armazena 
+    valores de 1 a 5 e para cada condição acenda um LED de cor diferente.
+  */
+
+
+
+int variavelNumeros = 5;
+
+#define pinLedVerde 2
+#define pinLedAmarelo 3
+#define pinLedLaranja 4
+#define pinLedAzul 5
+#define pinLedVermelho 6
+
+void setup(){
+   
+  pinMode(pinLedVerde, OUTPUT);
+  pinMode(pinLedAmarelo, OUTPUT);
+  pinMode(pinLedLaranja, OUTPUT);
+  pinMode(pinLedAzul, OUTPUT);
+  pinMode(pinLedVermelho, OUTPUT);
+  Serial.begin(9600);  
+  
+  
+  switch (variavelNumeros){    //estrutura de decisão ogual o if, porem mais limitado pois engloba uma condição de igualdade
+  case 1:                  //Comparação, caso seja algo faça alguma coisa
+  digitalWrite(pinLedVerde, HIGH);
+  Serial.println("Numero 1");
+  break;                   // Muito utilizada quano são necessárias muitas comparações, aqui é possivel ir em cada caso direto
+  
+  case 2:                   // So compara igualdades nao intervalos           
+  digitalWrite(pinLedAmarelo, HIGH);
+  Serial.println("Numero 2");
+  break;
+  
+  case 3:              
+  digitalWrite(pinLedLaranja, HIGH);
+  Serial.println("Numero 3");
+  break;
+  
+  case 4: 
+  digitalWrite(pinLedAzul, HIGH);
+  Serial.println("Numero 4");
+  break;
+    
+  case 5: 
+  digitalWrite(pinLedVermelho, HIGH);
+  Serial.println("Numero 5");
+  break;
+ 
+  default: //opção invalida 
+  Serial.println("Valor invalido");              
+  break;// break é final do bloco
+   
+  }
+}
+
+void loop()
+{
+  
+}
