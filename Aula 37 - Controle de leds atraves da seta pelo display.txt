@@ -1,0 +1,114 @@
+/* Autor: Mariana Cordeiro
+  Nome do programa: Acender led conforme posição de uma seta no display.
+  Data: 14/03
+  Descrição:Movimentar uma seta para cima com o botao1
+  movimentar seta para baixo com o botao2
+  Conforme posicao das setas ligar alterar estado do led e 
+  representa-lo no display.
+  Se a seta estiver na posicao 0, alterar estado do led Azul.
+  Se a seta estiver na posicao 1, alterar estado do led Verde.
+*/
+
+// A4 e A5 possuem comunicação i2c
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+#define pinAnalogico A0
+#define Botao1   0
+#define Botao2   145
+#define Botao3   329
+#define Botao4   505
+#define Botao5   741
+#define ledAzul  3
+#define ledVerde 2
+
+bool estadoLedAzul = 0;
+bool estadoLedVerde = 0;
+
+void setup()
+{
+  
+ pinMode(ledAzul,OUTPUT);
+ pinMode(ledVerde,OUTPUT);
+ Serial.begin(9600);
+ lcd.init();
+ lcd.backlight();
+ lcd.setCursor(1,0);
+ lcd.print("Led A:OFF");
+ lcd.setCursor(1,1);
+ lcd.print("Led B:OFF");
+  
+}
+
+void loop (){
+   // DECLARACAO DE VARIAVEIS ESTATICAS
+ static bool posicao = 0; 
+ int leituraAtual = analogRead(pinAnalogico);
+ static int leituraAnterior = 1023; 
+ Serial.println(leituraAtual);
+  
+ //**********LEITURA DOS BOTOES 1 e 2**********// 
+  
+ //Leitura do botao 1 e atrves dele há a 
+ //definicao de posicao da seta, para posicao 0
+ if (leituraAnterior == 1023 && leituraAtual == Botao1){
+ posicao = 0; 
+  }
+  
+ //Leitura do botao 2 e atrves dele há a 
+ //definicao de posicao da seta, para posicao 1  
+ else if (leituraAnterior == 1023 && leituraAtual >= Botao2 * 0.9 &&
+             leituraAtual <= Botao2 * 1.1){
+    posicao = 1;
+  }
+ 
+  //leituraAnterior = leituraAtual; Deve ser colocado por ultimo de todos os botoes a serem utilizados
+  // se colocar em cada botao ele grava o valor do primeiro botao e os demias nao funcionam
+ 
+  //**********POSICIONAMENTO DAS SETAS***********//
+   if (posicao == 0){
+    lcd.setCursor(0,0);
+    lcd.print(">");
+    lcd.setCursor(0,1);
+    lcd.print(" ");
+  }
+  else{
+    lcd.setCursor(0,1);
+    lcd.print(">");
+    lcd.setCursor(0,0);
+    lcd.print(" ");
+  }
+
+   //**********LEITURA DOS BOTAO 5**********//
+  // Se a posicao da seta estiver em 0, alterar estado do led azul.
+  if (leituraAnterior == 1023 && leituraAtual >= Botao5 * 0.9 &&
+    leituraAtual <= Botao5 * 1.1 && posicao == 0){
+    estadoLedAzul =  !estadoLedAzul;
+    digitalWrite(ledAzul, estadoLedAzul);
+  }
+  //Se a posicao da seta estiver em 1, alterar estado do led verde.
+  else if (leituraAnterior == 1023 && leituraAtual >= Botao5 * 0.9 &&
+           leituraAtual <= Botao5 * 1.1 && posicao == 1){
+    estadoLedVerde =  !estadoLedVerde;
+  }
+  digitalWrite(ledVerde, estadoLedVerde);
+  leituraAnterior = leituraAtual; /*Deve vir ao final do código depois de tratar todos os botoes
+  porque essa ordem assegura que a variável leituraanterior armazene o valor da leitura atual do 
+  botão após as mudanças de estado que podem ocorrer.
+  Se houver atualizacao da leituraAnterior antes de 
+  processar todos os botões, a leitura erradasera utilizada para 
+  a comparação, o que leva a um comportamento inconsistente.*/
+  
+  //**********MUDANCA DE ESTADO NO DISPLAY***********//
+  if (estadoLedAzul){
+    lcd.setCursor(7,0);
+    lcd.print("ON ");
+  }
+   
+  if (estadoLedVerde){
+    lcd.setCursor(7,1);
+    lcd.print(" ON");
+  }
+  
+}

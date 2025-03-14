@@ -1,0 +1,82 @@
+/* Autor: Mariana Cordeiro
+  Nome do programa: Controle de valores bits
+  Data: 13/03
+  Descrição: Leitura de sinais analogicos e ao apertar o botao, 
+  juntamente dos resisitores há um controle da taxa de informações.
+  Estas devem ser representadas no display, atraves de um botao 
+  pressionado.
+*/
+
+// A4 e A5 possuem comunicação i2c
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+#define pinAnalogico A0
+# define Botao1 0
+# define Botao2 145
+# define Botao3 329
+# define Botao4 505
+# define Botao5 741
+bool posicao = 0;
+
+
+   
+void setup()
+{
+ lcd.init();
+ lcd.backlight();
+ lcd.home();
+  Serial.begin(9600);
+}
+
+void loop ()
+{
+  int leituraA0 = analogRead(pinAnalogico);
+  
+  if (leituraA0 == 0){
+    lcd.setCursor(0,0);
+    lcd.print(" Botao 1  ");
+    lcd.setCursor(0,1);
+    lcd.print("<");
+   
+  }
+  else if (leituraA0 >= Botao2 *0,9 && leituraA0  <= Botao2 *1,0){
+    lcd.setCursor(0,0);
+    lcd.print(" Botao 2  ");
+    lcd.setCursor(0,0);
+    lcd.print("<");
+    lcd.setCursor(0,1);
+    lcd.print(" ");
+   
+  }
+    
+  else if (leituraA0 >= Botao3 *0,9 && leituraA0  <= Botao3 *1,0){
+    lcd.setCursor(0,0);
+    lcd.print("Botao 3  ");
+  }
+    else if (leituraA0 >= Botao4 *0,9 && leituraA0  <= Botao4 *1,0){
+    lcd.setCursor(0,0);
+    lcd.print("Botao 4  ");
+   
+  }
+  
+  else if (leituraA0 >= Botao5 *0,9 && leituraA0  <= Botao5 *1,0){
+  lcd.setCursor(0,0);
+  lcd.print("Botao 5  ");
+    
+  }
+
+ else {
+    lcd.setCursor(0,0);
+    lcd.print("Sem botao");
+ }
+    
+    
+    
+  
+ Serial.println(analogRead(A0));
+  delay (500);
+  
+  
+}

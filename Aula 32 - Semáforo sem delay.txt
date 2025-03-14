@@ -1,0 +1,64 @@
+/* Autor: Mariana Cordeiro
+  Nome do programa: Semáforos sem delay
+  Data: 07/03
+  Descrição: Fazer um semáforos de carros utilizando a logica sem delay.*/
+
+
+#define pinLedVermelhoA 2
+#define pinLedAmareloA  3
+#define pinLedVerdeA    4
+
+// unsigned long tempoAtual; tempo decorrido que deve ser utilizado no loop pois deve ser atualizado
+unsigned long tempoInicial = 0;
+int faseDosSemaforos       = 0; // Pode-se utilizar char pela questao de tamanho ou byte. Sem se preocupar com a questao de caracteres pois o valor atribuido nao sera impresso
+const int tempoLedVermelho = 5000; // constante inteira, nao ocupa memoria na memoria ram mas sim no programa
+const int tempoLedAmarelo  = 2000;  // criacao de entidade 
+const int tempoLedVerde    = 3000; 
+
+void setup()
+{
+  pinMode(pinLedVermelhoA, OUTPUT);
+  pinMode(pinLedAmareloA, OUTPUT);
+  pinMode(pinLedVerdeA, OUTPUT);
+ 
+}
+
+void loop()
+{ 
+  unsigned long tempoAtual= millis();
+  
+ //Semáforo verde
+  
+  switch (faseDosSemaforos){
+  case 0:  
+    digitalWrite(pinLedVerdeA, HIGH);
+    digitalWrite(pinLedVermelhoA, LOW);
+    if(tempoAtual - tempoInicial >= tempoLedVerde){
+    tempoInicial = tempoAtual;
+    faseDosSemaforos = 1;
+    }
+  break;
+    
+  //Semáforo Amarelo
+  case 1:  
+    digitalWrite(pinLedVerdeA, LOW);
+    digitalWrite(pinLedAmareloA, HIGH);
+    if(tempoAtual - tempoInicial >= tempoLedAmarelo){
+    tempoInicial = tempoAtual;
+    faseDosSemaforos = 2;
+    }
+  break;
+  
+  //Semáforo Vermelho
+  case 2:  
+    digitalWrite(pinLedAmareloA, LOW);
+    digitalWrite(pinLedVermelhoA, HIGH);
+    if(tempoAtual - tempoInicial >= tempoLedVermelho){
+    tempoInicial = tempoAtual;
+    faseDosSemaforos = 0;
+    }
+  break;
+    
+  }
+     
+}

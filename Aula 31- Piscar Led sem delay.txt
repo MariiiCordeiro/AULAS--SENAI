@@ -1,0 +1,52 @@
+/* Autor: Mariana Cordeiro
+  Nome do programa: Inrodução a lógica de temporizador
+  Data: 06/03
+  Descrição: Alterar estado do Led sem Delay*/
+
+
+
+#define pinledVermelho 13
+#define pinledVerde    11
+#define tempoEspera    1000
+
+/*unsigned long tempoms; 
+// Para descobrir a validade dessa variavel deve-se multiplicar a quantidade bits edepois fazer as multiplica;óes para
+// segu, min, horas e dias
+unsigned long tempous;
+// Prestar atenção na validade dessas variaveis para não dar overflow e para resolver essse problema
+// implementar uma variavel na outra para que a validade seja exponencial.
+// overflow, estouro de memória.*/
+
+unsigned long tempoDecorrido; //tempo decorrido
+unsigned long tempoInicial = 0; // tempo em que inicia-se a execucao
+bool estadoDoLed           = 0; // booleana para alteracao do led
+
+
+
+
+void setup()
+{
+  pinMode(pinledVermelho, OUTPUT);
+  pinMode(pinledVerde, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{ 
+  tempoDecorrido = millis();
+  
+  if(tempoDecorrido - tempoInicial >= tempoEspera){ // se o valor da subtração for maior igual ao tempo de esperar altera-se o estado do led
+    estadoDoLed = !estadoDoLed;
+    tempoInicial = tempoDecorrido;
+    
+  }
+    digitalWrite(pinledVermelho, estadoDoLed); // altera o estado do led
+    digitalWrite(pinledVerde, estadoDoLed);
+    
+  
+  
+    //tempoms = millis ();
+    //tempous = micros();
+//Serial.println (tempoms);
+  
+}

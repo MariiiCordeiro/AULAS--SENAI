@@ -1,0 +1,90 @@
+/* Autor: Mariana Cordeiro
+    Nome do programa: Utilização de Botões
+    Data: 10/03
+    Descrição: Acionamento do botão*/
+
+/* Infelizmento só funciona no simulador, pois não há condições 
+    fisicas envolvidas ou ruídos. Para sensores a lógica envolvida 
+    aqui serve mas para todos dispositivos eletromecânicos, deve-se seguir 
+    a lógica da parte 2.
+*/  
+
+
+/*Terminal esquerdo superior é interligado com o terminal esquerdo 
+inferior, o mesmo serve para o lado direito. No centro, há uma chave 
+que coma pressão e passagem de corrente ela é influenciada alterando 
+o nivel lógico. Quando pressionado o nivel logico sera 1, em que o vcc 
+irá passar para a saída. Fora isso será o GND com nivel lógico 0.
+O led nao tem nenhum vinculo eletrico com o botao para realizar seu 
+controle. Podendo realizar qualquer logica, pois [e o arduino que
+ controla o led, nao ao contrário*/
+
+//Acionamento do botao
+#define pinBotao 2
+#define pinLed   3
+int pressoesDoBotao = 0;
+
+
+void setup()
+{
+  pinMode(pinLed, OUTPUT);
+  pinMode(pinBotao, INPUT);
+  Serial.begin (9600);
+}
+
+void loop()
+{ 
+  bool statusBotao = digitalRead(pinBotao);
+  
+  pressoesDoBotao = pressoesDoBotao
+  
+  if (digitalRead(pinBotao)) // Não há ncessidade de colocar o == 1, pois trata-se de niveis logicos
+    digitalWrite(pinLed, HIGH); // Coloca-los seria redundante
+  
+  else
+    digitalWrite(pinLed,LOW);
+   
+  }
+  // Leitura do nivel logico do botao
+ // Serial.println(statusBotao);
+
+
+/* Autor: Mariana Cordeiro
+    Nome do programa: Utilização de Botões
+    Data: 10/03
+    Descrição: Contagem de acionamento do botão*/
+
+#define pinBotao 2
+#define pinLed   3
+int qntdPressoes = 0;
+// bool statusAnterior = 0; para que nao seja criada varias vezes utiliza-se um novo comando static
+// criando uma variavael local mas que nao se perde
+
+void setup()
+{ // Variáveis globais utilizo quando quero que sejam vistas em todo o programa
+  pinMode(pinLed, OUTPUT);
+  pinMode(pinBotao, INPUT);
+  Serial.begin (9600);
+}
+
+void loop()
+{ 
+  //Tudo que fica no loop é uma variável local, só fica visivel nesse local
+  
+  static bool statusAnterior = 0; // variavel local que nao ira se perder ao longo do caminho.
+  bool statusBotaoAtual = digitalRead(pinBotao);
+  
+    if (statusBotaoAtual == 1 && statusAnterior == 0 ){ 
+    qntdPressoes++;
+    Serial.println (qntdPressoes);
+  }
+  
+  statusAnterior = statusBotaoAtual;// Deve-se ficar fora do bloco do if para salvamento do valor atual do botao
+                                    
+
+}
+   
+
+
+
+

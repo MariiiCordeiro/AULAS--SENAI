@@ -1,0 +1,32 @@
+/* Autor: Mariana Cordeiro
+  Nome do programa: Entradas analogicas
+  Data: 12/03
+  Descrição: Leitura de sinais analogicos. Com esse programa 
+  é possivel  o valor de tensão no circuito atraves da leitura 
+  do sinal analógico.
+*/
+
+/* O arduino tem uma coisa chamada ADC(analog digital converter 2^10 de memoria - conversor analogico para digital
+Possuindo 0 ~ 1023 posicoes*/
+
+
+#define pinAnalogico0 A0
+float resultadoTensao = 0;
+
+void setup()
+{//Para pinos analogicos nao precisa-se classifica-los como saida, pois so existe ENTRADA
+  Serial.begin(9600);
+}
+
+void loop()
+{ // conversao digital para analogico sao numeros inteiros
+ int leituraA0 = analogRead(pinAnalogico0);// utiliza-se pela questao de tamanho dessa variavel e por ela ser compactivl em tamanho com o analog
+
+ (resultadoTensao = leituraA0*5/1024.0);
+Serial.println(resultadoTensao);
+
+}
+
+//É possivel realizar essa programação sem a utilização da variavwl resultado
+// Pegando somente a leitura e aplicando a regra de tres.
+/*Serial.println(leituraA0 *5/1024.0);

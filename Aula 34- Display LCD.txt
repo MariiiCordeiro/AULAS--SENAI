@@ -1,0 +1,114 @@
+ /* Autor: Mariana Cordeiro
+  Nome do programa: Ligando LEDS com o LCDI2C
+  Data: 11/03
+  Descrição:Acender led com botoes e representa-los no display.
+  Ao apertar o botão acende o LED e aparece escrito no LCD, "Led Aceso"
+  e ao apertar o botão novamente apagar o LED e aparece escrito no LCD ]
+  "Led apagado".
+*/
+
+#include <LiquidCrystal_I2C.h>//I2 e um tipo de comunicacao
+//Instalacao de biblioteca, se trata de um conjunto de codigo para funcionamneto do dispositivo display
+//Explica o objeto e apos nomeia o objeto. O paraenteses
+// e o parametros, o primeiro e o endereco, seguido de numeros de linhas e colunas
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+const int pinBotaoA = 2;
+const int ledVerde  = 3;
+const int pinBotaoB = 4;
+const int ledAzul   = 5;
+const int pinBotaoC = 6;
+const int ledBranco = 7;
+bool estadoLedVerde = 0;
+bool estadoLedAzul  = 0;
+bool estadoLedBranco  = 0;
+
+
+
+void setup() {
+  pinMode(ledVerde, OUTPUT);
+  pinMode (pinBotaoA, INPUT); 
+  pinMode(ledAzul, OUTPUT);
+  pinMode (pinBotaoB, INPUT); 
+  pinMode(ledBranco, OUTPUT);
+  pinMode (pinBotaoC, INPUT); 
+  lcd.init();//Inicia o objeto
+  lcd.backlight();// o lcd funciona com o apagao de alguns pixels, para reproduzir a escrita. Esse comando serve para ajustar a iluminacao
+  lcd.setCursor(0,0);// Para posicionar a escrita, primeiro a coluna e depois a linha
+  lcd.print("LedA:");
+  lcd.setCursor(0,1);
+  lcd.print("LedB:");
+  lcd.setCursor(8,0);
+  lcd.print("LedC:");
+  
+  
+//lcdsetCursor ();,pode ser escrito como lcd.home();  
+}
+
+void loop() {
+  
+   /*****Lógica Botão Verde*****/
+ static bool statusAnteriorA = 0;
+ bool statusBotaoAtualA = digitalRead(pinBotaoA);
+      
+      if(statusBotaoAtualA && !statusAnteriorA){
+      estadoLedVerde = !estadoLedVerde;
+  }
+  
+  digitalWrite(ledVerde, estadoLedVerde);
+  statusAnteriorA = statusBotaoAtualA;
+  
+   if (estadoLedVerde){
+    lcd.setCursor(5,0);
+    lcd.print("ON ");
+  } 
+  else {
+    lcd.setCursor(5,0);
+    lcd.print("OFF");
+  }
+  
+   /*****Lógica Botão Azul*****/
+  static bool statusAnteriorB = 0;
+  bool statusBotaoAtualB = digitalRead(pinBotaoB);
+      
+      if(statusBotaoAtualB && !statusAnteriorB){
+      estadoLedAzul = !estadoLedAzul;
+  }
+  
+  digitalWrite(ledAzul, estadoLedAzul);
+  statusAnteriorB = statusBotaoAtualB;
+  
+  if (estadoLedAzul){
+    lcd.setCursor(5,1);
+    lcd.print("ON ");
+  } 
+  else {
+    lcd.setCursor(5,1);
+    lcd.print("OFF");
+  }
+  
+  /*****Lógica Botão Branco*****/
+  
+  static bool statusAnteriorC = 0;
+  bool statusBotaoAtualC = digitalRead(pinBotaoC);
+      
+      if(statusBotaoAtualC && !statusAnteriorC){
+      estadoLedBranco = !estadoLedBranco;
+  }
+  
+  digitalWrite(ledBranco, estadoLedBranco);
+  statusAnteriorC = statusBotaoAtualC;
+  
+  if (estadoLedBranco){
+    lcd.setCursor(13,0);
+    lcd.print("ON ");
+  } 
+  else {
+    lcd.setCursor(13,0);
+    lcd.print("OFF");
+  }
+  
+  
+}
+    
